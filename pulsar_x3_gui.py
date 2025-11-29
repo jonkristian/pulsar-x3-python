@@ -175,13 +175,10 @@ class PulsarDevice:
         self.dev.ctrl_transfer(0x21, 0x09, 0x0300, 3, bytes(packet), timeout=1000)
 
 
-class PulsarWindow(Adw.Window):
+class PulsarWindow(Adw.ApplicationWindow):
     def __init__(self, app):
         super().__init__(application=app, title="Pulsar X3 Control")
         self.set_default_size(380, 550)
-        self.set_resizable(False)
-        # Hint as dialog for floating in tiling WMs
-        self.set_modal(False)
 
         self.device = PulsarDevice()
         self.updating = False
